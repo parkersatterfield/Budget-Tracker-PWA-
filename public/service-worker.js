@@ -5,16 +5,15 @@ const FILES_TO_CACHE = [
   "/index.html",
   "/icons/icon-192x192.png",
   "/icons/icon-512x512.png",
-  "/manifest.webmanifest",
-  "/public/styles.css",
-  "/index.js"
+  "/styles.css",
+  "/dist/bundle.js"
 ];
 
 // install
 self.addEventListener("install", function (evt) {
-  // pre cache image data
+  // pre cache icon data
   evt.waitUntil(
-    caches.open(DATA_CACHE_NAME).then((cache) => cache.add("/api/images"))
+    caches.open(DATA_CACHE_NAME).then((cache) => cache.add("/icons"))
   );
     
   // pre cache all static assets
@@ -47,7 +46,7 @@ self.addEventListener("activate", function(evt) {
 
 // fetch
 self.addEventListener("fetch", function(evt) {
-  if (evt.request.url.includes("/api/")) {
+  if (evt.request.url.includes("/routes/api.js")) {
     evt.respondWith(
       caches.open(DATA_CACHE_NAME).then(cache => {
         return fetch(evt.request)
