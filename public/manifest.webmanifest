@@ -1,6 +1,6 @@
 {
+  "short_name": "Budget Track",
   "name": "Budget Tracker",
-  "short_name": "Budget Tracker",
   "icons": [
     {
       "src": "icons/icon-192x192.png",
@@ -15,6 +15,7 @@
   ],
   "theme_color": "#ffffff",
   "background_color": "#ffffff",
+  // should this be /budget???
   "start_url": "/",
   "display": "standalone"
 }
